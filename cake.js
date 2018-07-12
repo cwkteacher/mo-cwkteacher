@@ -72,9 +72,9 @@ require('drone').extend(cake3);
 // up at the top of the cake for the next operation.
 function cake(radius, layers, layerHeight)
 {
-	if (cwk.udef(layers)) layers = 3;
-	if (cwk.udef(radius)) radius = 10;
-	if (cwk.udef(layerHeight)) layerHeight = 3;
+	layers = cwk.udef(layers, 3);
+	radius = cwk.udef(radius, 10);
+	layerHeight = cwk.udef(layerHeight, 3);
 
 	this.chkpt('cake'); // save drone starting position.
 
