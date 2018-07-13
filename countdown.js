@@ -2,8 +2,9 @@
 /*************************************************************************
 ### Drone.countdown() method.
 
-Constructs a large LCD Clock. The clock will display the current time of day.
-The clock can be stopped by calling the stopLCD() method of the Drone which created the clock.
+Constructs a large countdown timer. The countdown will display the number of seconds remaining.
+The countdown can be stopped by calling the stopCountdown() method of the Drone which 
+created the countdown.
 
 #### Parameters
 
@@ -18,7 +19,8 @@ At the in-game prompt you can create a countdown by looking at a block and typin
 /js timer.stopCountdown()
 ```
 
-Alternatively you can create a new Drone object from a Player or Location object and call the countdown() method.
+Alternatively you can create a new Drone object from a Player or Location object and 
+call the countdown() method.
 
 ```javascript
 var d = new Drone(player);
