@@ -125,7 +125,7 @@ command('hide', function(parameters, player) {
 
   intervalId = setInterval(update, 5000);
 
-  events.blockBreak( function( event ) {
+  events.blockBreak(function(event) {
 
     if (event.getBlock().getLocation().equals(hiddenLoc))
     {
