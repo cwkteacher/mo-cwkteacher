@@ -17,6 +17,12 @@ command('tag', function(parameters, player) {
 
 	var players = utils.players(function(other) {
 		other.teleport(player);	
+		if (other.getGameMode() != "SURVIVAL") {
+			echo(other, "You have to be in survival to play!");
+		}
+		else {
+			cwk.stripArmor(other);
+		}
 	});
 
     var it = players[cwk.random(0, players.length-1)];
