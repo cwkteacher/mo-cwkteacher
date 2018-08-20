@@ -2,7 +2,10 @@
 
 var cwk = require('cwk');
 var utils = require('utils');
+
 var whoIsIt;
+var intervalId;
+var gameTime;
 
 function setPlayerIt(player) {
 	echo(player, "TAG! You're IT!");
@@ -10,7 +13,26 @@ function setPlayerIt(player) {
 	whoIsIt = player.getDisplayName();
 }
 
+function update() {
+	gameTime -= 5;
+	if (gameTime == 0) {
+		clearInterval(intervalId);
+		utils.players(function(player) {
+			player.sendTitle("Game over!", 
+				whoIsIt + " LOST!", 
+				10, 300, 20);
+		});
+	} 
+	else {
+		utils.players(function(player) {
+			echo(player, gameTime + " secs left!");
+		});
+	}
+}
+
 command('tag', function(parameters, player) {
+
+	gameTime = 60;
 
 	var drone = new Drone(player);
 	drone.arena(blocks.gold, 50, 10, 50);
@@ -35,4 +57,7 @@ command('tag', function(parameters, player) {
     	}
 		cancel();
 	});
+
+	intervalId = setInterval(update, 5000);
+	update(); // Do the first update
 });
