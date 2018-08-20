@@ -7,4 +7,8 @@ command('tag', function(parameters, player) {
 
 	var drone = new Drone(player);
 	drone.arena(blocks.gold, 50, 10, 50);
+
+	utils.players(function(other) {
+		other.teleport(player);	
+	});
 });
